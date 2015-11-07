@@ -24,7 +24,6 @@ uint8_t chartab[] = {
 };
 
 void setup() {
-  // put your setup code here, to run once:
   for(int i=0; i<sizeof(up); i++){
     pinMode(up[i], INPUT);
   }
@@ -51,31 +50,9 @@ void writeDigit(uint8_t digit, uint8_t val){
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   for(int num=0; num<=3999; num++){
     for(int digit=0, count=num; digit<4; digit++, count/=10){
       if(!(digit==3 && num<1000)) writeDigit(digit, count%10);
-//      delay(250);
+    }
   }
-    
-  }
-//  for(int i=0; i<sizeof(up); i++){
-//    pinMode(up[i], OUTPUT);
-//    digitalWrite(up[i], HIGH);
-//  }
-//  for(int i=0; i<sizeof(down); i++){
-//    pinMode(down[i], OUTPUT);
-//    digitalWrite(down[i], LOW);
-//  }
-//  delay(250);
-//  for(int i=0; i<sizeof(up); i++){
-//    pinMode(up[i], OUTPUT);
-//    digitalWrite(up[i], HIGH);
-//  }
-//  for(int i=0; i<sizeof(down); i++){
-//    pinMode(down[i], OUTPUT);
-//    digitalWrite(down[i], HIGH);
-//  }
-//  delay(250);
-  
 }
