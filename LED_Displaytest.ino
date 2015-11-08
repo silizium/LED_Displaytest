@@ -32,12 +32,13 @@ void setup() {
   }
 }
 
-void setPin(uint8_t digit, uint8_t segment){
+void pinOn(uint8_t digit, uint8_t segment){
   pinMode(digit, OUTPUT);
   digitalWrite(digit, HIGH);
   pinMode(segment, OUTPUT);
   digitalWrite(segment, LOW);
-  delay(1);
+}
+void pinOff(uint8_t digit, uint8_t segment){
   pinMode(segment,INPUT);
   pinMode(digit, INPUT);
 }
@@ -45,14 +46,35 @@ void setPin(uint8_t digit, uint8_t segment){
 void writeDigit(uint8_t digit, uint8_t val){
   uint8_t bits=chartab[val];
   for(uint8_t i=0; i<=7; i++){
-    if((1<<i) & bits) setPin(up[digit], down[i]);
+    if((1<<i) & bits) {
+        pinOn(up[digit], down[i]);
+        delay(1);
+        pinOff(up[digit], down[i]);
+    }
   }
 }
 
+void writeHex(int val){
+  uint8_t llbits=chartab[val & 0xf];
+  uint8_t lhbits=chartab[(val >> 4) & 0xf];
+  uint8_t hlbits=chartab[(val >> 8) & 0xf];
+  uint8_t hhbits=chartab[(val >> 12) & 0xf];
+  for(uint8_t i=0; i<=7; i++){
+    if((1<<i) & llbits) pinOn(up[0], down[i]);
+    if((1<<i) & lhbits) pinOn(up[1], down[i]);
+    if((1<<i) & hlbits) pinOn(up[2], down[i]);
+    if((1<<i) & hhbits) pinOn(up[3], down[i]);
+    delay(1);
+    pinOff(up[0], down[i]);
+    pinOff(up[1], down[i]);
+    pinOff(up[2], down[i]);
+    pinOff(up[3], down[i]);
+  }
+}
+
+
 void loop() {
-  for(int num=0; num<=3999; num++){
-    for(int digit=0, count=num; digit<4; digit++, count/=10){
-      if(!(digit==3 && num<1000)) writeDigit(digit, count%10);
-    }
+  for(int num=0; num<=0x3fff; num++){
+      writeHex(num);
   }
 }
