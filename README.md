@@ -4,8 +4,11 @@ Small Arduino-Sketch to test an old 4 digit 7 segment display that I recycled fr
 
 Can do: 
 -999  … 3999 decimal
+
 -99.9 … 399.9 decimal with point
+
 -fff  … 3fff hex
+
 -ff.f … 3ff.f hex with fraction
 
 TODO:
