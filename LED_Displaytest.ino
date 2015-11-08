@@ -61,9 +61,9 @@ void writeHex(int val){
   uint8_t hhbits=chartab[(val >> 12) & 0xf];
   for(uint8_t i=0; i<=7; i++){
     if((1<<i) & llbits) pinOn(up[0], down[i]);
-    if((1<<i) & lhbits) pinOn(up[1], down[i]);
-    if((1<<i) & hlbits) pinOn(up[2], down[i]);
-    if((1<<i) & hhbits) pinOn(up[3], down[i]);
+    if((val > 0xf) && ((1<<i) & lhbits)) pinOn(up[1], down[i]);
+    if((val > 0xff) && ((1<<i) & hlbits)) pinOn(up[2], down[i]);
+    if((val > 0xfff) && ((1<<i) & hhbits)) pinOn(up[3], down[i]);
     delay(1);
     pinOff(up[0], down[i]);
     pinOff(up[1], down[i]);
