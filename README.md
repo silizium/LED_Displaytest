@@ -1,6 +1,6 @@
 # LED_Displaytest
 
-Small Arduino-Sketch to test an old 4 digit 7 segment display that I recycled from a scale from 1991. The code is neither efficient nor good. But it works and tests the digits. 
+Small Arduino-Sketch to test an old 4 digit 7 segment display that I recycled from a scale from 1991. The code is neither efficient nor good, but still better and is shorter than everything I found. Well, it works. Simple output.
 
 Can do: 
 
