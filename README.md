@@ -12,5 +12,11 @@ Can do:
 
 -ff.f … 3ff.f hex with fraction
 
+Simple call:
+
+writeHex(uint16_t value);
+
+writeDec(int decimal, bool point);
+
 TODO:
   redo it in assembly with I²C so that my old AT90S1200 can function as a smart display-controller for this so I come to a cheap diagnostic display. Display should be done on an interrupt. 
