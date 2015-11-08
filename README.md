@@ -20,3 +20,5 @@ writeDec(int decimal, bool point);
 
 TODO:
   redo it in assembly with I²C so that my old AT90S1200 can function as a smart display-controller for this so I come to a cheap diagnostic display. Display should be done on an interrupt. 
+  
+See also so see it run https://www.youtube.com/watch?v=jq2N87pUtM8
